@@ -1,5 +1,5 @@
 import { use } from "react";
-import Category from "./Category";
+import Category from "../Category/Category";
 
 const Categories = ({ categoriesPromise, handleFoodPromise }) => {
   const categoriesData = use(categoriesPromise);
