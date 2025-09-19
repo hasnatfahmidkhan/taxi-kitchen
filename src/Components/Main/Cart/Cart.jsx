@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = ({ oldFoodDetail }) => {
+const Cart = ({ oldFoodDetail, handleRemoveCart }) => {
   console.log(oldFoodDetail);
   return (
     <>
@@ -24,7 +24,10 @@ const Cart = ({ oldFoodDetail }) => {
               </h2>
             </div>
           </div>
-          <div className="w-6 h-6 flex justify-center items-center bg-red-600 rounded-full absolute -top-1 -right-1 text-white">
+          <div
+            onClick={() => handleRemoveCart(foodDetail.id)}
+            className="w-6 h-6 flex justify-center items-center cursor-pointer active:scale-95 bg-red-500 rounded-full absolute -top-1 -right-1 text-white"
+          >
             <i className="fa-solid fa-xmark" />
           </div>
         </div>

@@ -1,10 +1,8 @@
-import React from "react";
-
-const Total = () => {
+const Total = ({ totolPrice }) => {
   return (
-    <div className="bg-[#FEBF00] mt-10 rounded">
+    <div className="bg-[#FEBF00] mt-5 rounded">
       <h2 className="p-3 text-white font-bold">
-        Total $<span>560</span>BDT
+        Total $ <span>{totolPrice}</span> BDT
       </h2>
     </div>
   );

@@ -32,7 +32,22 @@ const MainSection = ({ mainSectionRef }) => {
   const handleAddCart = (newFoodDetail) => {
     setOldFoodDetail([...oldFoodDetail, newFoodDetail]);
   };
-  // console.log(oldFoodDetail);
+
+  // get total price
+  const totolPrice = oldFoodDetail.reduce(
+    (acc, foodDetail) => acc + foodDetail.price,
+    0
+  );
+
+  // Function to get the remove item from the cart
+  const handleRemoveCart = (id) => {
+    // filtered the cart
+    // console.log(id);
+    const filteredCart = oldFoodDetail.filter(
+      (foodDetail) => foodDetail.id !== id
+    );
+    setOldFoodDetail(filteredCart);
+  };
 
   return (
     <div
@@ -56,7 +71,11 @@ const MainSection = ({ mainSectionRef }) => {
         </Suspense>
       </section>
 
-      <Carts oldFoodDetail={oldFoodDetail}></Carts>
+      <Carts
+        handleRemoveCart={handleRemoveCart}
+        totolPrice={totolPrice}
+        oldFoodDetail={oldFoodDetail}
+      ></Carts>
     </div>
   );
 };
