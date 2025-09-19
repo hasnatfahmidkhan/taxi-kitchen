@@ -15,12 +15,15 @@ const Cart = ({ oldFoodDetail, handleRemoveCart }) => {
               className="w-[50px] rounded-xl h-[50px] object-cover"
             />
           </div>
-          <div className="flex-1">
-            <h1 className="text-xs font-bold">{foodDetail.title}</h1>
-            <div className="">
+          <div className="flex-1 space-y-2">
+            <h1 className="text-sm font-bold">{foodDetail.title}</h1>
+            <div className="flex justify-between pr-2">
               <h2 className="text-yellow-600 font-semibold">
                 $ <span className="price">{foodDetail.price}</span> BDT
               </h2>
+              <p className="text-sm text-gray-500">
+                Quantity: {foodDetail.quantity}
+              </p>
             </div>
           </div>
           <div

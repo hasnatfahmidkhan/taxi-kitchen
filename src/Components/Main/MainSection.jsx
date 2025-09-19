@@ -30,21 +30,34 @@ const MainSection = ({ mainSectionRef }) => {
 
   // get food detail for cart
   const handleAddCart = (newFoodDetail) => {
-    const uniqueId = oldFoodDetail.length + 1;
-    setOldFoodDetail([...oldFoodDetail, { ...newFoodDetail, uniqueId }]);
-    // console.log();
+    const isExitFood = oldFoodDetail.find(
+      (food) => food.title === newFoodDetail.title
+    );
+    if (isExitFood) {
+      const updatedCart = oldFoodDetail.map((item) => {
+        return item.id === newFoodDetail.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item;
+      });
+      setOldFoodDetail(updatedCart);
+    } else {
+      const uniqueId = oldFoodDetail.length + 1;
+      setOldFoodDetail([
+        ...oldFoodDetail,
+        { ...newFoodDetail, uniqueId, quantity: 1 },
+      ]);
+    }
+    console.log(oldFoodDetail);
   };
 
   // get total price
   const totolPrice = oldFoodDetail.reduce(
-    (acc, foodDetail) => acc + foodDetail.price,
+    (acc, foodDetail) => acc + foodDetail.price * foodDetail.quantity,
     0
   );
 
   // Function to get the remove item from the cart
   const handleRemoveCart = (uniqueId) => {
-    // filtered the cart
-    // console.log(id);
     const filteredCart = oldFoodDetail.filter(
       (foodDetail) => foodDetail.uniqueId !== uniqueId
     );
