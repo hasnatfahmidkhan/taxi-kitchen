@@ -1,12 +1,11 @@
 import React from "react";
 
 const Cart = ({ oldFoodDetail, handleRemoveCart }) => {
-  console.log(oldFoodDetail);
   return (
     <>
       {oldFoodDetail.map((foodDetail) => (
         <div
-          key={foodDetail.id}
+          key={foodDetail.uniqueId}
           className="p-1 bg-white flex gap-3 shadow rounded-xl relative"
         >
           <div className="img">
@@ -25,7 +24,7 @@ const Cart = ({ oldFoodDetail, handleRemoveCart }) => {
             </div>
           </div>
           <div
-            onClick={() => handleRemoveCart(foodDetail.id)}
+            onClick={() => handleRemoveCart(foodDetail.uniqueId)}
             className="w-6 h-6 flex justify-center items-center cursor-pointer active:scale-95 bg-red-500 rounded-full absolute -top-1 -right-1 text-white"
           >
             <i className="fa-solid fa-xmark" />

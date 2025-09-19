@@ -30,7 +30,9 @@ const MainSection = ({ mainSectionRef }) => {
 
   // get food detail for cart
   const handleAddCart = (newFoodDetail) => {
-    setOldFoodDetail([...oldFoodDetail, newFoodDetail]);
+    const uniqueId = oldFoodDetail.length + 1;
+    setOldFoodDetail([...oldFoodDetail, { ...newFoodDetail, uniqueId }]);
+    // console.log();
   };
 
   // get total price
@@ -40,11 +42,11 @@ const MainSection = ({ mainSectionRef }) => {
   );
 
   // Function to get the remove item from the cart
-  const handleRemoveCart = (id) => {
+  const handleRemoveCart = (uniqueId) => {
     // filtered the cart
     // console.log(id);
     const filteredCart = oldFoodDetail.filter(
-      (foodDetail) => foodDetail.id !== id
+      (foodDetail) => foodDetail.uniqueId !== uniqueId
     );
     setOldFoodDetail(filteredCart);
   };
@@ -54,12 +56,10 @@ const MainSection = ({ mainSectionRef }) => {
       ref={mainSectionRef}
       className="grid grid-cols-12 gap-5 mt-10 w-11/12 mx-auto min-h-screen py-4"
     >
-      <Suspense>
-        <Categories
-          handleFoodPromise={handleFoodPromise}
-          categoriesPromise={categoriesPromise}
-        ></Categories>
-      </Suspense>
+      <Categories
+        handleFoodPromise={handleFoodPromise}
+        categoriesPromise={categoriesPromise}
+      ></Categories>
       <section className="col-span-7 p-3">
         <h1 className="text-xl font-bold text-center rounded-2xl">Our Foods</h1>
         <div className="divider" />
