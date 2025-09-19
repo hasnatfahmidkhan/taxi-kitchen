@@ -47,7 +47,6 @@ const MainSection = ({ mainSectionRef }) => {
         { ...newFoodDetail, uniqueId, quantity: 1 },
       ]);
     }
-    console.log(oldFoodDetail);
   };
 
   // get total price
@@ -62,6 +61,24 @@ const MainSection = ({ mainSectionRef }) => {
       (foodDetail) => foodDetail.uniqueId !== uniqueId
     );
     setOldFoodDetail(filteredCart);
+  };
+
+  const handleIncreaseQuantity = (foodItem) => {
+    handleAddCart(foodItem);
+  };
+
+  const handleDecreaseQuantity = (foodItem) => {
+    const updatedCart = oldFoodDetail
+      .map((item) => {
+        return item.id === foodItem.id
+          ? {
+              ...item,
+              quantity: item.quantity - 1,
+            }
+          : item;
+      })
+      .filter((item) => item.quantity > 0);
+    setOldFoodDetail(updatedCart);
   };
 
   return (
@@ -85,6 +102,8 @@ const MainSection = ({ mainSectionRef }) => {
       </section>
 
       <Carts
+        handleIncreaseQuantity={handleIncreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
         handleRemoveCart={handleRemoveCart}
         totolPrice={totolPrice}
         oldFoodDetail={oldFoodDetail}
