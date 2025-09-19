@@ -12,7 +12,7 @@ const Categories = ({ categoriesPromise, handleFoodPromise }) => {
       <div className="divider" />
 
       <div
-        className="grid grid-cols-1 sticky top-10 gap-3"
+        className="grid grid-cols-1 sticky top-5 gap-3"
         id="category-container"
       >
         {categories.map((category) => (

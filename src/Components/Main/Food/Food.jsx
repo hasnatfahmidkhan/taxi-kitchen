@@ -1,4 +1,4 @@
-const Food = ({ food }) => {
+const Food = ({ food, handleAddCart }) => {
   return (
     <div className="p-5 bg-white flex gap-3 shadow rounded-xl">
       <div className="img flex-1">
@@ -16,7 +16,7 @@ const Food = ({ food }) => {
             $ <span className="price">{food.price}</span> BDT
           </h2>
         </div>
-        <button className="btn btn-warning">
+        <button onClick={() => handleAddCart(food)} className="btn btn-warning">
           <i className="fa-solid fa-square-plus" />
           Add This Item
         </button>
