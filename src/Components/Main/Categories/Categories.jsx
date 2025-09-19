@@ -11,7 +11,10 @@ const Categories = ({ categoriesPromise }) => {
       </h1>
       <div className="divider" />
 
-      <div className="grid grid-cols-1 gap-3" id="category-container">
+      <div
+        className="grid grid-cols-1 sticky top-5 gap-3"
+        id="category-container"
+      >
         {categories.map((category) => (
           <Category key={category.id} category={category}></Category>
         ))}
