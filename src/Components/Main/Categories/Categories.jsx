@@ -1,7 +1,7 @@
-import React, { use } from "react";
+import { use } from "react";
 import Category from "./Category";
 
-const Categories = ({ categoriesPromise }) => {
+const Categories = ({ categoriesPromise, handleFoodPromise }) => {
   const categoriesData = use(categoriesPromise);
   const categories = categoriesData.categories;
   return (
@@ -16,7 +16,11 @@ const Categories = ({ categoriesPromise }) => {
         id="category-container"
       >
         {categories.map((category) => (
-          <Category key={category.id} category={category}></Category>
+          <Category
+            key={category.id}
+            category={category}
+            handleFoodPromise={handleFoodPromise}
+          ></Category>
         ))}
       </div>
     </section>
