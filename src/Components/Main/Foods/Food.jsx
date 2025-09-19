@@ -1,5 +1,3 @@
-import React from "react";
-
 const Food = ({ food }) => {
   return (
     <div className="p-5 bg-white flex gap-3 shadow rounded-xl">

@@ -1,6 +1,7 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import Categories from "./Categories/Categories";
 import Foods from "./Foods/Foods";
+import Carts from "./Carts/Carts";
 const categoriesPromise = fetch(
   "https://taxi-kitchen-api.vercel.app/api/v1/categories"
 ).then((res) => res.json());
@@ -17,6 +18,8 @@ const Main = () => {
       <Suspense fallback="Loading...">
         <Foods foodsPromise={foodsPromise}></Foods>
       </Suspense>
+
+      <Carts></Carts>
     </div>
   );
 };
