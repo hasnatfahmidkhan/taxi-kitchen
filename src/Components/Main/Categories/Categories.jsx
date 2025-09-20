@@ -1,9 +1,17 @@
-import { use } from "react";
+import { use, useState } from "react";
 import Category from "../Category/Category";
 
 const Categories = ({ categoriesPromise, handleFoodPromise }) => {
   const categoriesData = use(categoriesPromise);
   const categories = categoriesData.categories;
+  const [activeStatus, setActiveStatus] = useState(null);
+  const handleActiveStatus = (id) => {
+    setActiveStatus(id);
+    console.log(activeStatus);
+    handleFoodPromise(id);
+    console.log(id);
+    // handleFoodPromise(category.id);
+  };
   return (
     <section className="bg-[#FEBF00] col-span-2 rounded-xl p-3">
       <h1 className="text-xl font-bold text-center bg-white rounded-2xl">
@@ -17,9 +25,11 @@ const Categories = ({ categoriesPromise, handleFoodPromise }) => {
       >
         {categories.map((category) => (
           <Category
+            handleActiveStatus={handleActiveStatus}
+            activeStatus={activeStatus}
             key={category.id}
             category={category}
-            handleFoodPromise={handleFoodPromise}
+            // handleFoodPromise={handleFoodPromise}
           ></Category>
         ))}
       </div>
